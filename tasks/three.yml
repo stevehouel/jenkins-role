@@ -4,7 +4,7 @@
 - name: Ensure Jenkins container has an up-to-date configuration
   docker:
     name: "jenkins-master"
-    image: "{{ athena_registry_url }}/jenkins:{{ jenkins_master_version }}"
+    image: "jenkins:{{ jenkins_master_version }}" # use newly official docker image
     state: "reloaded"
     pull: always
     ports:

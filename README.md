@@ -1,4 +1,4 @@
-# Jenkins Creation playbook #
+# Jenkins Creation role #
 
 
 ## Requirements
