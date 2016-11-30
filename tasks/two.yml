@@ -1,0 +1,37 @@
+---
+# tasks file for jenkins
+
+- name: Ensure Docker Daemon configuration file is up-to-date
+  template:
+    backup: "yes"
+    src: "{{ item }}"
+    dest: "{{ jenkins_home_path }}"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  with_fileglob:
+    - "{{ inventory_dir }}/conf-jenkins/config/*"
+  tags:
+    - init
+
+- name: Ensure Docker Daemon configuration file is up-to-date
+  template:
+    backup: "yes"
+    src: "{{ inventory_dir }}/conf-jenkins/docker2"
+    dest: "{{ jenkins_docker_config_path }}/docker"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  tags:
+    - init
+
+- name: Ensure Maven configuration file is up-to-date
+  template:
+    backup: "yes"
+    src: "{{ inventory_dir }}/conf-jenkins/settings.xml"
+    dest: "{{ jenkins_maven_config_path }}/settings.xml"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  tags:
+    - init

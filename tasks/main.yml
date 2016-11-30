@@ -1,0 +1,7 @@
+---
+# tasks file for jenkins
+
+# Includes
+- include: one.yml
+- include: two.yml
+- include: three.yml

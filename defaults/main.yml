@@ -1,0 +1,4 @@
+---
+# defaults file for jenkins
+
+docker_insecure_registries: ["registry.prod.athena.ts-agora.com"]

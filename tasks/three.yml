@@ -1,0 +1,23 @@
+---
+# tasks file for jenkins
+
+- name: Ensure Jenkins container has an up-to-date configuration
+  docker:
+    name: "jenkins-master"
+    image: "{{ athena_registry_url }}/jenkins:{{ jenkins_master_version }}"
+    state: "reloaded"
+    pull: always
+    ports:
+      - "{{ jenkins_port }}:8080"
+    volumes:
+      - "{{ jenkins_home_path }}:/var/jenkins_home"
+      - "{{ jenkins_docker_config_path }}:/etc/default"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "{{ jenkins_maven_config_path }}/settings.xml:/root/.m2/settings.xml"
+    env:
+      HTTP_PROXY="{{ http_proxy }}",
+      HTTPS_PROXY="{{ https_proxy }}",
+      NO_PROXY="{{ no_proxy }}"
+
+  tags:
+    - docker

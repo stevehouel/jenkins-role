@@ -1,0 +1,4 @@
+.ssl/*
+.project
+.settings/
+.pydevproject

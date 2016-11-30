@@ -1,0 +1,52 @@
+---
+# tasks file for jenkins
+
+- name: Ensure Jenkins role path is available
+  file:
+    path: "{{ jenkins_path }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  tags:
+    - init
+
+- name: Ensure Jenkins git repository volume path is available
+  file:
+    path: "{{ jenkins_home_path }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  tags:
+    - init
+
+- name: Ensure Jenkins configuration volume path is available
+  file:
+    path: "{{ jenkins_config_path }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  tags:
+    - init
+
+- name: Ensure Jenkins Docker configuration volume path is available
+  file:
+    path: "{{ jenkins_docker_config_path }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  tags:
+    - init
+
+- name: Ensure Jenkins Maven configuration volume path is available
+  file:
+    path: "{{ jenkins_maven_config_path }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  tags:
+    - init
